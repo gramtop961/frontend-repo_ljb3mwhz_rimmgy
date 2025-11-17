@@ -10,8 +10,20 @@ export default function Hero({ onPrimaryClick, onSecondaryClick }) {
         <Spline scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
+      {/* Breathing aura behind the content */}
+      <motion.div
+        aria-hidden
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        initial={{ scale: 1, opacity: 0.5 }}
+        animate={{ scale: [1, 1.06, 1], opacity: [0.45, 0.6, 0.45] }}
+        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+        style={{ filter: 'blur(40px)' }}
+      >
+        <div className="pointer-events-none h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(147,197,253,0.55)_0%,rgba(167,139,250,0.45)_40%,rgba(255,255,255,0)_70%)] sm:h-[560px] sm:w-[560px] lg:h-[720px] lg:w-[720px]" />
+      </motion.div>
+
       {/* Soft gradient overlay to keep it subtle */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.75)_0%,rgba(255,255,255,0.9)_40%,rgba(255,255,255,1)_70%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.78)_0%,rgba(255,255,255,0.9)_40%,rgba(255,255,255,1)_70%)]" />
 
       <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-24 sm:pt-32 sm:pb-28">
         <div className="mx-auto max-w-3xl text-center">
@@ -21,7 +33,11 @@ export default function Hero({ onPrimaryClick, onSecondaryClick }) {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-xs text-zinc-600 shadow-sm backdrop-blur"
           >
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-indigo-400" />
+            <motion.span
+              className="inline-block h-1.5 w-1.5 rounded-full bg-indigo-400"
+              animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+            />
             Top Rated — Trusted by high-intent platforms
           </motion.div>
 
